@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMove3D : MonoBehaviour {
+public class PlayerMove : MonoBehaviour {
 	public float moveSpeed;
 	public float turnSpeed;
 	public float jumpHeight;
 
 	void Update () {
-		var j = Input.GetAxis("Jump")* Time.deltaTime * jumpHeight
+		var j = Input.GetAxis("Jump")* Time.deltaTime * jumpHeight;
 		var y = Input.GetAxis("Horizontal")* Time.deltaTime * turnSpeed;
 		var z = Input.GetAxis("Vertical")* Time.deltaTime * moveSpeed;
 
@@ -16,8 +16,4 @@ public class PlayerMove3D : MonoBehaviour {
 		transform.Translate(0,j,0);
 	
 	}
-	
-	
-	
-	
 }
