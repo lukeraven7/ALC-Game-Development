@@ -5,10 +5,7 @@ public class PlayerMove3D : MonoBehaviour {
 	public float moveSpeed;
 	public float turnSpeed;
 	public float jumpHeight;
-	
-	}
-	
-	
+
 	void Update () {
 		var j = Input.GetAxis("Jump")* Time.deltaTime * jumpHeight
 		var y = Input.GetAxis("Horizontal")* Time.deltaTime * turnSpeed;
@@ -17,5 +14,10 @@ public class PlayerMove3D : MonoBehaviour {
 		transform.Rotate(0,y,0);
 		transform.Translate(0,0,z);
 		transform.Translate(0,j,0);
+	
 	}
+	
+	
+	
+	
 }
