@@ -8,7 +8,8 @@ public class FlashLight : MonoBehaviour {
 	Light light;	
 	
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		light = GetComponent<Light> ();
 		// set light default to ON
 		lightOn = true;
@@ -20,18 +21,19 @@ public class FlashLight : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.L) && lightOn) {
 		lightOn = false;
 		light.enabled = false;
+		}
 	
-	}
-	else if (Input.GetKeyUp (KeyCode.L) && !lightOn){
+		else if (Input.GetKeyUp (KeyCode.L) && !lightOn){
 		lightOn = true;
 		light.enabled = true;
 		}
-		public void setLightOn(){
+	}
+
+		 public void setLightOn(){
 			lightOn = true;
 		}
 
 		public bool isLightOn(){
 			return lightOn;
-		}
 	}
 }
