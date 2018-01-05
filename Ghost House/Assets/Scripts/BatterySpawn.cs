@@ -9,6 +9,8 @@ public class BatterySpawn : MonoBehaviour {
 
 	public bool batSpawned;
 
+	private bool spawning = false;
+
 	public Transform spawnPoint;
 
 	// Use this for initialization
@@ -17,21 +19,26 @@ public class BatterySpawn : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	/*void Update () {
+	void Update () {
 		
-		//if(batSpawned == false){
-			//StartCoroutine(SpawnBat(spawnTime, battery));
-			print("Battery has spawned!");
+		if(batSpawned == false){
+			if(!spawning){
+				spawning = !spawning;
+				StartCoroutine(SpawnBat(spawnTime, battery));
+				print("Spawn Box Empty!");
+			}
+
 		}
-		else{
-			print("Spawn box is empty!");
-			//print("There is already a battery!");
+		else if(batSpawned == true){
+			print("Battery has spawned!");
+			
 		}
 	}
-	*/
-	void OnTriggerStay(Collider other){
+	
+	void OnTriggerEnter(Collider other){
 		print("Collision Detected");
 		if(other.gameObject.tag == "Battery"){
+			print("Battery is in the trigger!");
 			batSpawned = true;
 		}
 		else{
