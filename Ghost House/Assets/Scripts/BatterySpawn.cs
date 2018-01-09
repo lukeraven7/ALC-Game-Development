@@ -36,20 +36,27 @@ public class BatterySpawn : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other){
-		print("Collision Detected");
 		if(other.gameObject.tag == "Battery"){
 			print("Battery is in the trigger!");
 			batSpawned = true;
 		}
-		else{
+	}
+	void OnTriggerExit(Collider other){
+		if(other.gameObject.tag == "Battery"){
+			print("Spawner is empty");
 			batSpawned = false;
 		}
 	}
 
-	//IEnumerator SpawnBat(float time, Rigidbody bat){
-		//yield return new WaitForSeconds(time);
-		//Instantiate(battery, spawnPoint.position, spawnPoint.rotation);
-		//batSpawned = true;
-	//}
+	IEnumerator SpawnBat(float time, Rigidbody bat){
+		yield return new WaitForSeconds(time);
+		Instantiate(bat, spawnPoint.position, spawnPoint.rotation);
+		batSpawned = true;
+		spawning = !spawning;
+	}
+		public void BatteryPickup(){
 
+			print("Spawner is Empty");
+			batSpawned = false;
+		}
 }
